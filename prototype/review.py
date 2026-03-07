@@ -59,7 +59,29 @@ def compute_stats(trades):
     }
 
 
-def save_review_html(trades, out_path, img_path, hist_path):
+def save_drawdown_curve(trades, out_path):
+    pnl = [float(t["pnl"]) for t in trades]
+    eq = []
+    s = 0
+    for p in pnl:
+        s += p
+        eq.append(s)
+    peak = -1e9
+    dd = []
+    for v in eq:
+        peak = max(peak, v)
+        dd.append(peak - v)
+
+    plt.style.use('dark_background')
+    plt.figure(figsize=(6,3))
+    plt.plot(dd, color="#ef4444")
+    plt.title("Drawdown Curve")
+    plt.tight_layout()
+    plt.savefig(out_path)
+    plt.close()
+
+
+def save_review_html(trades, out_path, img_path, hist_path, dd_path):
     stats = compute_stats(trades)
     html = f"""
     <html><head>
@@ -92,6 +114,10 @@ def save_review_html(trades, out_path, img_path, hist_path):
       <div class="card">
         <h2>PnL Distribution</h2>
         <img src="{hist_path}" width="500" />
+      </div>
+      <div class="card">
+        <h2>Drawdown Curve</h2>
+        <img src="{dd_path}" width="500" />
       </div>
       <div class="card">
         <h2>Trades</h2>
