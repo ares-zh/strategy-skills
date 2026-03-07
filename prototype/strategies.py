@@ -39,12 +39,28 @@ def parse_file(path: str) -> StrategySpec:
     return StrategySpec(**data)
 
 
+def _normalize_ocr(text: str) -> str:
+    # common OCR cleanup
+    t = text.upper()
+    t = t.replace("0/", "O/")
+    t = t.replace("O/", "0/")
+    t = t.replace("SL", "SL ")
+    t = t.replace("TP", "TP ")
+    t = t.replace("LONGONLY", "LONG ONLY")
+    return t
+
+
 def parse_image(path: str) -> StrategySpec:
-    # OCR screenshot to text, then parse prompt
+    # OCR screenshot to text, then parse prompt (with second-pass cleanup)
     try:
         import pytesseract
         from PIL import Image
     except Exception as e:
         raise RuntimeError("pytesseract/PIL missing. Install tesseract + pytesseract.") from e
-    text = pytesseract.image_to_string(Image.open(path))
-    return parse_prompt(text)
+    raw = pytesseract.image_to_string(Image.open(path))
+    spec = parse_prompt(raw)
+    # second pass if TP or SL missing
+    if spec.tp is None or spec.sl is None:
+        cleaned = _normalize_ocr(raw)
+        spec = parse_prompt(cleaned)
+    return spec
