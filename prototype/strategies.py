@@ -29,3 +29,11 @@ def parse_prompt(prompt: str) -> StrategySpec:
         sl=float(sl.group(1)) if sl else None,
         tp=float(tp.group(1)) if tp else None,
     )
+
+
+def parse_file(path: str) -> StrategySpec:
+    # supported: JSON with fields matching StrategySpec
+    import json
+    with open(path, "r") as f:
+        data = json.load(f)
+    return StrategySpec(**data)

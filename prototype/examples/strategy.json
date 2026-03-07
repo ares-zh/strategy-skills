@@ -1,0 +1,9 @@
+{
+  "symbol": "BTCUSDT",
+  "timeframe": "1h",
+  "direction": "long",
+  "entry": "EMA20/50 cross",
+  "exit": "reverse cross",
+  "sl": 2.0,
+  "tp": 4.0
+}

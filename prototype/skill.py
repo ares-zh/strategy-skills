@@ -6,7 +6,8 @@ from exchanges import BitgetAdapter, OrderRequest
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--prompt", required=True)
+    p.add_argument("--prompt", required=False)
+    p.add_argument("--file", required=False)
     p.add_argument("--exchange", default="bitget")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--order-type", default="market", choices=["market", "limit"])
@@ -15,7 +16,13 @@ def main():
     p.add_argument("--skip-backtest", action="store_true")
     args = p.parse_args()
 
-    spec = parse_prompt(args.prompt)
+    if args.file:
+        from strategies import parse_file
+        spec = parse_file(args.file)
+    else:
+        if not args.prompt:
+            raise ValueError("Provide --prompt or --file")
+        spec = parse_prompt(args.prompt)
     print("=== Strategy Spec ===")
     print(spec)
 
