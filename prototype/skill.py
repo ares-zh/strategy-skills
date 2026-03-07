@@ -12,15 +12,20 @@ def main():
     p.add_argument("--order-type", default="market", choices=["market", "limit"])
     p.add_argument("--price", type=float, default=None)
     p.add_argument("--cost", type=float, default=None)
+    p.add_argument("--skip-backtest", action="store_true")
     args = p.parse_args()
 
     spec = parse_prompt(args.prompt)
-    report = run_backtest(spec)
-
     print("=== Strategy Spec ===")
     print(spec)
-    print("\n=== Backtest Report ===")
-    print(report)
+
+    if not args.skip_backtest:
+        report = run_backtest(spec)
+        print("\n=== Backtest Report ===")
+        print(report)
+    else:
+        print("\n=== Backtest Report ===")
+        print("Skipped")
 
     if args.exchange == "bitget":
         adapter = BitgetAdapter(sandbox=True)
