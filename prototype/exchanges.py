@@ -77,6 +77,19 @@ class BitgetAdapter(ExchangeAdapter):
 class HyperliquidAdapter(ExchangeAdapter):
     name = "hyperliquid"
 
-    def connect(self, credentials: dict):
-        # placeholder for Hyperliquid SDK
-        raise NotImplementedError
+    def __init__(self, sandbox: bool = True):
+        self.sandbox = sandbox
+        self.client = None
+
+    def connect(self, credentials: dict | None = None):
+        # TODO: wire Hyperliquid SDK / REST
+        # env vars: HYPERLIQUID_PRIVATE_KEY, HYPERLIQUID_WALLET
+        raise NotImplementedError("Hyperliquid adapter not wired yet")
+
+    def place_order(self, order: OrderRequest, dry_run: bool = True, cost: float | None = None):
+        if dry_run:
+            return {"status": "dry-run", "order": order, "cost": cost}
+        raise NotImplementedError("Hyperliquid adapter not wired yet")
+
+    def get_order(self, order_id: str, symbol: str):
+        raise NotImplementedError("Hyperliquid adapter not wired yet")
