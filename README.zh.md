@@ -15,10 +15,14 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 
 ## ⚡ 快速开始
 
-### 作为 OpenClaw Skill 安装（规划中）
+### 作为 OpenClaw Skill 安装
 ```bash
-# 占位：打包后提供安装命令
-# openclaw skills install strategy-skills
+openclaw skills install /Users/aresbot/.openclaw/workspace/skills/dist/strategy-skills.skill
+```
+
+### 配置向导
+```bash
+/Users/aresbot/.openclaw/workspace/skills/strategy-skills/scripts/config_wizard.sh
 ```
 
 ### 在 OpenClaw 中使用
@@ -27,9 +31,9 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 “使用 Strategy Skills：EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%”
 ```
 
-### 文件/图片输入（规划中）
-- 上传策略文件（CSV/JSON/脚本片段）
-- 或提供截图/白板 → 自动还原策略
+### 文件/图片输入
+- JSON 策略文件：`--file examples/strategy.json`
+- 截图 OCR：`--image examples/strategy.png`（本地 OCR）
 
 ---
 
@@ -37,8 +41,9 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 1) **Strategy Hub**：prompt/文件/图片 → 标准化 DSL
 2) **Backtest Engine**：回测指标、净值曲线、滑点模型
 3) **Execution Layer**：交易所适配 + 风控
-4) **Console**：参数调优 + 实盘监控
-5) **Skills API**：`load / backtest / deploy`
+4) **Reporting**：回执 + PNG/HTML 报告
+5) **Console**：参数调优 + 实盘监控
+6) **Skills API**：`load / backtest / deploy`
 
 ---
 
@@ -47,6 +52,8 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 - 自动执行 + 风控
 - 绩效报表
 - 标准化成交回执（下单→状态→成交）
+- 回测 PNG + HTML 报告
+- 交易复盘 PNG + HTML 报告
 - 交易所返佣入口（可选）
 
 ---
@@ -60,6 +67,10 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 
 ## 🧩 路线图
 见 `ROADMAP.md`。
+
+## 📊 可视化产物
+- 回测：`backtest_equity.png`, `backtest_report.html`
+- 复盘：`trade_pnl.png`, `trade_review.html`
 
 ---
 

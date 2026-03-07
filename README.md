@@ -15,21 +15,24 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 
 ## ⚡ Quick Start
 
-### Install as an OpenClaw Skill (planned)
+### Install as an OpenClaw Skill
 ```bash
-# placeholder: will provide install command once packaged
-# openclaw skills install strategy-skills
+openclaw skills install /Users/aresbot/.openclaw/workspace/skills/dist/strategy-skills.skill
+```
+
+### Configure (wizard)
+```bash
+/Users/aresbot/.openclaw/workspace/skills/strategy-skills/scripts/config_wizard.sh
 ```
 
 ### Use in OpenClaw
 ```
-# Example
 "Use Strategy Skills: EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
 ```
 
-### File/Image input (planned)
-- Upload strategy file (CSV/JSON/script)
-- Or provide a screenshot/whiteboard → auto‑extraction
+### File/Image input
+- JSON strategy file: `--file examples/strategy.json`
+- Screenshot OCR: `--image examples/strategy.png` (local OCR)
 
 ---
 
@@ -37,8 +40,9 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 1) **Strategy Hub** – prompt/file/image → standardized DSL
 2) **Backtest Engine** – metrics, equity curve, costs/slippage
 3) **Execution Layer** – exchange adapters + risk controls
-4) **Console** – parameter tuning + live monitoring
-5) **Skills API** – `load / backtest / deploy`
+4) **Reporting** – receipts + PNG/HTML reports
+5) **Console** – parameter tuning + live monitoring
+6) **Skills API** – `load / backtest / deploy`
 
 ---
 
@@ -47,6 +51,8 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 - Auto execution with risk guards
 - Performance reports
 - Standardized trade receipt (order → status → filled)
+- Backtest PNG + HTML report
+- Trade review PNG + HTML report
 - Optional exchange‑referral flow
 
 ---
@@ -60,6 +66,10 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 
 ## 🧩 Roadmap
 See `ROADMAP.md`.
+
+## 📊 Visual Reports
+- Backtest: `backtest_equity.png`, `backtest_report.html`
+- Review: `trade_pnl.png`, `trade_review.html`
 
 ---
 
