@@ -22,6 +22,9 @@ python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4
 # file input
 python3 skill.py --file examples/strategy.json --exchange bitget --dry-run
 
+# image input (requires tesseract)
+python3 skill.py --image examples/strategy.png --exchange bitget --dry-run
+
 # market buy by cost (USDT amount)
 python3 skill.py --prompt "..." --exchange bitget --order-type market --cost 20 --dry-run
 

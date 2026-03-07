@@ -8,6 +8,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--prompt", required=False)
     p.add_argument("--file", required=False)
+    p.add_argument("--image", required=False)
     p.add_argument("--exchange", default="bitget")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--order-type", default="market", choices=["market", "limit"])
@@ -19,9 +20,12 @@ def main():
     if args.file:
         from strategies import parse_file
         spec = parse_file(args.file)
+    elif args.image:
+        from strategies import parse_image
+        spec = parse_image(args.image)
     else:
         if not args.prompt:
-            raise ValueError("Provide --prompt or --file")
+            raise ValueError("Provide --prompt or --file or --image")
         spec = parse_prompt(args.prompt)
     print("=== Strategy Spec ===")
     print(spec)

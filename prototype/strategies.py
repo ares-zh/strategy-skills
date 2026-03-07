@@ -37,3 +37,14 @@ def parse_file(path: str) -> StrategySpec:
     with open(path, "r") as f:
         data = json.load(f)
     return StrategySpec(**data)
+
+
+def parse_image(path: str) -> StrategySpec:
+    # OCR screenshot to text, then parse prompt
+    try:
+        import pytesseract
+        from PIL import Image
+    except Exception as e:
+        raise RuntimeError("pytesseract/PIL missing. Install tesseract + pytesseract.") from e
+    text = pytesseract.image_to_string(Image.open(path))
+    return parse_prompt(text)
