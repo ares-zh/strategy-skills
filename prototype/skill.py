@@ -34,6 +34,12 @@ def main():
         res = adapter.place_order(order, dry_run=args.dry_run, cost=args.cost)
         print("\n=== Execution (Bitget) ===")
         print(res)
+
+        # if live order, fetch status
+        if not args.dry_run and res and isinstance(res, dict) and res.get("id"):
+            status = adapter.get_order(res["id"], order.symbol)
+            print("\n=== Order Status ===")
+            print(status)
     else:
         print("\nExchange not supported yet.")
 

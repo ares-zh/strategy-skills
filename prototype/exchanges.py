@@ -20,6 +20,9 @@ class ExchangeAdapter:
     def place_order(self, order: OrderRequest, dry_run: bool = True):
         raise NotImplementedError
 
+    def get_order(self, order_id: str, symbol: str):
+        raise NotImplementedError
+
 
 class BitgetAdapter(ExchangeAdapter):
     name = "bitget"
@@ -64,6 +67,11 @@ class BitgetAdapter(ExchangeAdapter):
             price=order.price,
             params=params,
         )
+
+    def get_order(self, order_id: str, symbol: str):
+        if not self.client:
+            self.connect(None)
+        return self.client.fetch_order(order_id, symbol)
 
 
 class HyperliquidAdapter(ExchangeAdapter):
