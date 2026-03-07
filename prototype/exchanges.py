@@ -79,17 +79,34 @@ class HyperliquidAdapter(ExchangeAdapter):
 
     def __init__(self, sandbox: bool = True):
         self.sandbox = sandbox
-        self.client = None
+        self.exchange = None
+        self.wallet = None
 
     def connect(self, credentials: dict | None = None):
-        # TODO: wire Hyperliquid SDK / REST
-        # env vars: HYPERLIQUID_PRIVATE_KEY, HYPERLIQUID_WALLET
-        raise NotImplementedError("Hyperliquid adapter not wired yet")
+        from hyperliquid.exchange import Exchange
+        from hyperliquid.utils import constants
+
+        pk = os.getenv("HYPERLIQUID_PRIVATE_KEY")
+        wallet = os.getenv("HYPERLIQUID_WALLET")
+        if not pk or not wallet:
+            raise ValueError("Missing Hyperliquid env vars")
+
+        api_url = constants.TESTNET_API_URL if self.sandbox else constants.MAINNET_API_URL
+        self.wallet = wallet
+        self.exchange = Exchange(pk, api_url, wallet)
 
     def place_order(self, order: OrderRequest, dry_run: bool = True, cost: float | None = None):
         if dry_run:
             return {"status": "dry-run", "order": order, "cost": cost}
-        raise NotImplementedError("Hyperliquid adapter not wired yet")
+        if not self.exchange:
+            self.connect(None)
+
+        is_buy = order.side.lower() == "buy"
+        if order.order_type == "limit":
+            return self.exchange.order(order.symbol, is_buy, order.qty, order.price, {"limit": {"tif": "Gtc"}})
+        else:
+            return self.exchange.order(order.symbol, is_buy, order.qty, order.price or 0, {"market": {}})
 
     def get_order(self, order_id: str, symbol: str):
-        raise NotImplementedError("Hyperliquid adapter not wired yet")
+        # Hyperliquid SDK has openOrders / userState; order status retrieval TBD
+        return {"status": "pending", "order_id": order_id, "symbol": symbol}
