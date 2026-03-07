@@ -36,6 +36,14 @@ python3 skill.py --prompt "..." --exchange hyperliquid --order-type market --dry
 
 # hyperliquid limit
 python3 skill.py --prompt "..." --exchange hyperliquid --order-type limit --price 65000 --dry-run
+
+# trade review (CSV)
+python3 - <<'PY'
+from review import load_trades, save_trade_pnl_chart, save_review_html
+trades = load_trades('examples/trades.csv')
+save_trade_pnl_chart(trades, 'trade_pnl.png')
+save_review_html(trades, 'trade_review.html', 'trade_pnl.png')
+PY
 ```
 
 ## Notes
