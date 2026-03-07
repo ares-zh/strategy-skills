@@ -2,6 +2,8 @@
 
 **One‑line**: Turn a strategy prompt into backtest → deploy → auto‑execute, with exchange adapters (Bitget / Hyperliquid).
 
+**Languages**: [English](README.md) | [中文](README.zh.md)
+
 ## Why
 Traditional strategy trading is fragmented. Strategy Skills makes the path **prompt → backtest → execution** one‑click.
 
