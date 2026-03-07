@@ -29,8 +29,11 @@ def main():
             raise ValueError("Provide --prompt or --file or --image")
         if args.llm:
             from llm_parser import parse_strategy_llm
-            from strategies import parse_schema
+            from strategies import parse_schema, missing_fields
             schema = parse_strategy_llm(args.prompt)
+            miss = missing_fields(schema)
+            if miss:
+                print("Missing fields:", miss)
             spec = parse_schema(schema)
         else:
             spec = parse_prompt(args.prompt)

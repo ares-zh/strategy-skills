@@ -24,4 +24,20 @@ def parse_strategy_llm(text: str) -> dict:
     data = r.json()
     content = data["choices"][0]["message"]["content"]
     # assume content is JSON
-    return json.loads(content)
+    schema = json.loads(content)
+    return normalize_schema(schema)
+
+
+def normalize_schema(schema: dict) -> dict:
+    schema.setdefault("symbol", "BTCUSDT")
+    schema.setdefault("timeframe", "1h")
+    schema.setdefault("direction", "both")
+    schema.setdefault("entry", "")
+    schema.setdefault("exit", "")
+    schema.setdefault("filters", [])
+    schema.setdefault("risk", {})
+    schema["risk"].setdefault("sl", None)
+    schema["risk"].setdefault("tp", None)
+    schema["risk"].setdefault("max_position", 100)
+    schema["risk"].setdefault("daily_loss", 20)
+    return schema

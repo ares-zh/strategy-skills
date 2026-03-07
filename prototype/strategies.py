@@ -59,6 +59,14 @@ def parse_schema(schema: dict) -> StrategySpec:
     )
 
 
+def missing_fields(schema: dict) -> list:
+    required = ["symbol", "timeframe", "direction", "entry", "exit"]
+    missing = [k for k in required if not schema.get(k)]
+    if not schema.get("risk"):
+        missing.append("risk")
+    return missing
+
+
 def _normalize_ocr(text: str) -> str:
     # common OCR cleanup
     t = text.upper()
