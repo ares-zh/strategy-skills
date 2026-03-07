@@ -107,7 +107,7 @@ class HyperliquidAdapter(ExchangeAdapter):
         if order.order_type == "limit":
             return self.exchange.order(order.symbol, is_buy, order.qty, order.price, {"limit": {"tif": "Gtc"}})
         else:
-            return self.exchange.order(order.symbol, is_buy, order.qty, order.price or 0, {"market": {}})
+            return self.exchange.market_open(order.symbol, is_buy, order.qty)
 
     def get_order(self, order_id: str, symbol: str):
         # Hyperliquid SDK has openOrders / userState; order status retrieval TBD
