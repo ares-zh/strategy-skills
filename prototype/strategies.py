@@ -20,11 +20,18 @@ def parse_prompt(prompt: str) -> StrategySpec:
     tp = re.search(r"TP\s*(\d+\.?\d*)%", prompt, re.I)
     direction = "long" if "long" in prompt.lower() else "both"
 
+    # support RSI / MACD keywords
+    entry = "EMA20/50 cross"
+    if "RSI" in prompt.upper():
+        entry = "RSI"
+    if "MACD" in prompt.upper():
+        entry = "MACD"
+
     return StrategySpec(
         symbol=symbol.group(1) if symbol else "BTCUSDT",
         timeframe=timeframe.group(1) if timeframe else "1h",
         direction=direction,
-        entry="EMA20/50 cross",
+        entry=entry,
         exit="reverse cross",
         sl=float(sl.group(1)) if sl else None,
         tp=float(tp.group(1)) if tp else None,
