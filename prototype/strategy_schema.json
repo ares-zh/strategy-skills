@@ -1,0 +1,14 @@
+{
+  "symbol": "BTCUSDT",
+  "timeframe": "1h",
+  "direction": "long|short|both",
+  "entry": "rule description",
+  "exit": "rule description",
+  "filters": ["optional filters"],
+  "risk": {
+    "sl": 2.0,
+    "tp": 4.0,
+    "max_position": 100,
+    "daily_loss": 20
+  }
+}
