@@ -2,30 +2,71 @@
 
 **一句话**：把策略 prompt 变成回测 → 部署 → 自动执行，并支持 Bitget / Hyperliquid 适配器。
 
-## 为什么做这个
-传统策略交易割裂且成本高。Strategy Skills 让 **prompt → 回测 → 执行** 变成一键流程。
+**语言**： [English](README.md) | [中文](README.zh.md)
 
-## 功能（MVP）
-- 策略 prompt 解析（后续支持文件/图片）
-- 回测占位版（指标 + 报告）
-- 交易所适配器骨架（Bitget/Hyperliquid）
-- 风控（规划中）
+---
 
-## 快速开始
+## 🚀 这是什么？
+Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测 → 一键部署 → 实盘执行**。
+
+痛点：大多数策略死在“想法”和“执行”之间。我们把这条链路打通。
+
+---
+
+## ⚡ 快速开始
+
+### 方案 A — Prompt（最快）
 ```bash
 cd prototype
 python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
 ```
 
-## 文档
-- PRD：`PRD.md`
-- 项目概览：`PROJECT_OVERVIEW.md`
+### 方案 B — 文件/图片（规划中）
+- 上传策略文件（CSV/JSON/脚本片段）
+- 或提供截图/白板 → 自动还原策略
 
-## 路线图
-见 `ROADMAP.md`
+---
 
-## 贡献
-见 `CONTRIBUTING.md`
+## 🧠 模块架构
+1) **Strategy Hub**：prompt/文件/图片 → 标准化 DSL
+2) **Backtest Engine**：回测指标、净值曲线、滑点模型
+3) **Execution Layer**：交易所适配 + 风控
+4) **Console**：参数调优 + 实盘监控
+5) **Skills API**：`load / backtest / deploy`
 
-## 许可证
+---
+
+## ✅ 你会得到什么
+- 一键回测
+- 自动执行 + 风控
+- 绩效报表
+- 交易所返佣入口（可选）
+
+---
+
+## 🎯 适用场景
+- “我有策略想法，但没有系统”
+- “我想快速筛 5 个策略再部署”
+- “我要 Bitget/Hyperliquid 自动执行管线”
+
+---
+
+## 🧩 路线图
+见 `ROADMAP.md`。
+
+---
+
+## 🛡️ 安全与风控
+- 自动执行必须用户确认
+- 仓位与日亏损硬限制
+- 完整操作日志
+
+---
+
+## 🤝 贡献
+见 `CONTRIBUTING.md`。
+
+---
+
+## 📄 许可证
 MIT
