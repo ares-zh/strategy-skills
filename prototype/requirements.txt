@@ -3,3 +3,4 @@ hyperliquid-python-sdk
 pytesseract
 pillow
 matplotlib
+requests

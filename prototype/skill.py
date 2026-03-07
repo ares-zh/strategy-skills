@@ -9,6 +9,7 @@ def main():
     p.add_argument("--prompt", required=False)
     p.add_argument("--file", required=False)
     p.add_argument("--image", required=False)
+    p.add_argument("--llm", action="store_true")
     p.add_argument("--exchange", default="bitget")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--order-type", default="market", choices=["market", "limit"])
@@ -26,7 +27,13 @@ def main():
     else:
         if not args.prompt:
             raise ValueError("Provide --prompt or --file or --image")
-        spec = parse_prompt(args.prompt)
+        if args.llm:
+            from llm_parser import parse_strategy_llm
+            from strategies import parse_schema
+            schema = parse_strategy_llm(args.prompt)
+            spec = parse_schema(schema)
+        else:
+            spec = parse_prompt(args.prompt)
     print("=== Strategy Spec ===")
     print(spec)
 

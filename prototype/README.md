@@ -25,6 +25,9 @@ python3 skill.py --file examples/strategy.json --exchange bitget --dry-run
 # image input (requires tesseract)
 python3 skill.py --image examples/strategy.png --exchange bitget --dry-run
 
+# LLM parsing (requires OPENAI_API_KEY)
+python3 skill.py --prompt "My strategy: ..." --llm --exchange bitget --dry-run
+
 # market buy by cost (USDT amount)
 python3 skill.py --prompt "..." --exchange bitget --order-type market --cost 20 --dry-run
 

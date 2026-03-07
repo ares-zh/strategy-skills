@@ -46,6 +46,19 @@ def parse_file(path: str) -> StrategySpec:
     return StrategySpec(**data)
 
 
+def parse_schema(schema: dict) -> StrategySpec:
+    # map schema to StrategySpec
+    return StrategySpec(
+        symbol=schema.get("symbol", "BTCUSDT"),
+        timeframe=schema.get("timeframe", "1h"),
+        direction=schema.get("direction", "both"),
+        entry=schema.get("entry", ""),
+        exit=schema.get("exit", ""),
+        sl=schema.get("risk", {}).get("sl"),
+        tp=schema.get("risk", {}).get("tp"),
+    )
+
+
 def _normalize_ocr(text: str) -> str:
     # common OCR cleanup
     t = text.upper()
