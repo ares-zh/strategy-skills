@@ -89,7 +89,7 @@ def run_backtest(spec, limit: int = 500) -> BacktestReport:
         win_rate=win_rate,
         trades=trades,
         notes="Simple SMA(20/50) backtest using Binance OHLCV",
-    )
+    ), equity
 
 
 def _tf_to_days(tf: str) -> float:

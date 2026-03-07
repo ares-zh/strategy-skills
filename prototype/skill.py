@@ -31,9 +31,16 @@ def main():
     print(spec)
 
     if not args.skip_backtest:
-        report = run_backtest(spec)
+        report, equity = run_backtest(spec)
         print("\n=== Backtest Report ===")
         print(report)
+        try:
+            from visualize import save_equity_curve, save_html_report
+            save_equity_curve(equity, "backtest_equity.png")
+            save_html_report(spec, report, equity, "backtest_report.html", "backtest_equity.png")
+            print("\nSaved: backtest_equity.png, backtest_report.html")
+        except Exception as e:
+            print("Visualization skipped:", e)
     else:
         print("\n=== Backtest Report ===")
         print("Skipped")
