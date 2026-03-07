@@ -40,7 +40,7 @@ class BitgetAdapter(ExchangeAdapter):
             "secret": secret,
             "password": passphrase,
             "enableRateLimit": True,
-            "options": {"defaultType": "swap"},
+            "options": {"defaultType": "swap", "createMarketBuyOrderRequiresPrice": False},
         })
         # enable sandbox if supported
         try:
@@ -48,17 +48,21 @@ class BitgetAdapter(ExchangeAdapter):
         except Exception:
             pass
 
-    def place_order(self, order: OrderRequest, dry_run: bool = True):
+    def place_order(self, order: OrderRequest, dry_run: bool = True, cost: float | None = None):
         if dry_run:
-            return {"status": "dry-run", "order": order}
+            return {"status": "dry-run", "order": order, "cost": cost}
         if not self.client:
             self.connect(None)
+        params = {}
+        if cost is not None:
+            params["cost"] = cost
         return self.client.create_order(
             symbol=order.symbol,
             type=order.order_type,
             side=order.side,
             amount=order.qty,
             price=order.price,
+            params=params,
         )
 
 
