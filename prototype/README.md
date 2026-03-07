@@ -11,8 +11,9 @@ Prototype the end-to-end flow: **strategy input → parse → backtest (stub) �
 
 ## Run
 ```bash
+pip install -r requirements.txt
 python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
 ```
 
 ## Notes
-This is a functional skeleton, not yet connected to real exchange APIs or data sources.
+Backtest now fetches OHLCV from Binance via CCXT (no API key required).
