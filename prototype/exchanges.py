@@ -85,15 +85,17 @@ class HyperliquidAdapter(ExchangeAdapter):
     def connect(self, credentials: dict | None = None):
         from hyperliquid.exchange import Exchange
         from hyperliquid.utils import constants
+        from eth_account import Account
 
         pk = os.getenv("HYPERLIQUID_PRIVATE_KEY")
-        wallet = os.getenv("HYPERLIQUID_WALLET")
-        if not pk or not wallet:
+        wallet_addr = os.getenv("HYPERLIQUID_WALLET")
+        if not pk or not wallet_addr:
             raise ValueError("Missing Hyperliquid env vars")
 
         api_url = constants.TESTNET_API_URL if self.sandbox else constants.MAINNET_API_URL
-        self.wallet = wallet
-        self.exchange = Exchange(pk, api_url, wallet)
+        wallet = Account.from_key(pk)
+        self.wallet = wallet_addr
+        self.exchange = Exchange(wallet, api_url, account_address=wallet_addr)
 
     def place_order(self, order: OrderRequest, dry_run: bool = True, cost: float | None = None):
         if dry_run:
