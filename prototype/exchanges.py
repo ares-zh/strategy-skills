@@ -107,6 +107,13 @@ class HyperliquidAdapter(ExchangeAdapter):
         if order.order_type == "limit":
             return self.exchange.order(order.symbol, is_buy, order.qty, order.price, {"limit": {"tif": "Gtc"}})
         else:
+            # enforce size decimals from meta
+            try:
+                meta = self.exchange.info.meta()
+                sz_decimals = next(x for x in meta["universe"] if x["name"] == order.symbol)["szDecimals"]
+                order.qty = round(order.qty, sz_decimals)
+            except Exception:
+                pass
             return self.exchange.market_open(order.symbol, is_buy, order.qty)
 
     def get_order(self, order_id: str, symbol: str):
