@@ -15,13 +15,19 @@ Strategy Skills 是一条龙策略执行管线：**策略想法 → 自动回测
 
 ## ⚡ 快速开始
 
-### 方案 A — Prompt（最快）
+### 作为 OpenClaw Skill 安装（规划中）
 ```bash
-cd prototype
-python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
+# 占位：打包后提供安装命令
+# openclaw skills install strategy-skills
 ```
 
-### 方案 B — 文件/图片（规划中）
+### 在 OpenClaw 中使用
+```
+示例：
+“使用 Strategy Skills：EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%”
+```
+
+### 文件/图片输入（规划中）
 - 上传策略文件（CSV/JSON/脚本片段）
 - 或提供截图/白板 → 自动还原策略
 

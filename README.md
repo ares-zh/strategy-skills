@@ -15,13 +15,19 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 
 ## ⚡ Quick Start
 
-### Option A — Prompt (fastest)
+### Install as an OpenClaw Skill (planned)
 ```bash
-cd prototype
-python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
+# placeholder: will provide install command once packaged
+# openclaw skills install strategy-skills
 ```
 
-### Option B — File/Image (planned)
+### Use in OpenClaw
+```
+# Example
+"Use Strategy Skills: EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
+```
+
+### File/Image input (planned)
 - Upload strategy file (CSV/JSON/script)
 - Or provide a screenshot/whiteboard → auto‑extraction
 
