@@ -66,6 +66,7 @@ See `ROADMAP.md`.
 ## 🛡️ Safety & Risk
 - Auto‑execution requires explicit user confirmation
 - Hard caps on position size & daily loss
+- Hyperliquid size rounding to min step
 - Full logs for audit
 
 ---

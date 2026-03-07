@@ -24,6 +24,12 @@ python3 skill.py --prompt "..." --exchange bitget --order-type market --cost 20 
 
 # limit buy
 python3 skill.py --prompt "..." --exchange bitget --order-type limit --price 65000 --dry-run
+
+# hyperliquid market
+python3 skill.py --prompt "..." --exchange hyperliquid --order-type market --dry-run
+
+# hyperliquid limit
+python3 skill.py --prompt "..." --exchange hyperliquid --order-type limit --price 65000 --dry-run
 ```
 
 ## Notes

@@ -40,6 +40,13 @@ def main():
             status = adapter.get_order(res["id"], order.symbol)
             print("\n=== Order Status ===")
             print(status)
+    elif args.exchange == "hyperliquid":
+        from exchanges import HyperliquidAdapter
+        adapter = HyperliquidAdapter(sandbox=True)
+        order = OrderRequest(symbol="BTC", side="buy", qty=0.00022, order_type=args.order_type, price=args.price)
+        res = adapter.place_order(order, dry_run=args.dry_run)
+        print("\n=== Execution (Hyperliquid) ===")
+        print(res)
     else:
         print("\nExchange not supported yet.")
 
