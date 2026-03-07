@@ -19,11 +19,14 @@ def save_trade_pnl_chart(trades, out_path):
         s += p
         eq.append(s)
 
+    plt.style.use('dark_background')
     plt.figure(figsize=(8,4))
-    plt.plot(eq)
+    color = "#22c55e" if eq[-1] >= 0 else "#ef4444"
+    plt.plot(eq, color=color)
     plt.title("Trade PnL Curve")
     plt.xlabel("Trades")
     plt.ylabel("PnL")
+    plt.grid(alpha=0.2)
     plt.tight_layout()
     plt.savefig(out_path)
     plt.close()

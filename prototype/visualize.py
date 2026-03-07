@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 
 def save_equity_curve(equity, out_path):
+    plt.style.use('dark_background')
     plt.figure(figsize=(8,4))
-    plt.plot(equity)
+    plt.plot(equity, color="#22c55e")
     plt.title("Equity Curve")
     plt.xlabel("Trades")
     plt.ylabel("Equity")
+    plt.grid(alpha=0.2)
     plt.tight_layout()
     plt.savefig(out_path)
     plt.close()
