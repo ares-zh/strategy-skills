@@ -53,10 +53,7 @@ class BitgetAdapter(ExchangeAdapter):
             return {"status": "dry-run", "order": order, "cost": cost}
         if not self.client:
             self.connect(None)
-        params = {
-            "marginMode": "isolated",
-            "posSide": "long" if order.side == "buy" else "short",
-        }
+        params = {}
         if cost is not None:
             params["cost"] = cost
         return self.client.create_order(

@@ -29,8 +29,8 @@ def main():
 
     if args.exchange == "bitget":
         adapter = BitgetAdapter(sandbox=True)
-        # use swap symbol to ensure futures endpoint
-        order = OrderRequest(symbol="BTC/USDT:USDT", side="buy", qty=1, order_type=args.order_type, price=args.price)
+        # spot order (simplest)
+        order = OrderRequest(symbol="BTC/USDT", side="buy", qty=0.001, order_type=args.order_type, price=args.price)
         res = adapter.place_order(order, dry_run=args.dry_run, cost=args.cost)
         print("\n=== Execution (Bitget) ===")
         print(res)
