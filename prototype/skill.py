@@ -1,11 +1,14 @@
 import argparse
 from strategies import parse_prompt
 from backtest import run_backtest
+from exchanges import BitgetAdapter, OrderRequest
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--prompt", required=True)
+    p.add_argument("--exchange", default="bitget")
+    p.add_argument("--dry-run", action="store_true")
     args = p.parse_args()
 
     spec = parse_prompt(args.prompt)
@@ -15,7 +18,15 @@ def main():
     print(spec)
     print("\n=== Backtest Report ===")
     print(report)
-    print("\nNext: deploy to exchange (stub).")
+
+    if args.exchange == "bitget":
+        adapter = BitgetAdapter(sandbox=True)
+        order = OrderRequest(symbol="BTC/USDT", side="buy", qty=0.001)
+        res = adapter.place_order(order, dry_run=args.dry_run)
+        print("\n=== Execution (Bitget) ===")
+        print(res)
+    else:
+        print("\nExchange not supported yet.")
 
 
 if __name__ == "__main__":

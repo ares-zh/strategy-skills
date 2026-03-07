@@ -12,8 +12,14 @@ Prototype the end-to-end flow: **strategy input → parse → backtest (stub) �
 ## Run
 ```bash
 pip install -r requirements.txt
-python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%"
+# set Bitget demo API keys
+export BITGET_API_KEY=...
+export BITGET_API_SECRET=...
+export BITGET_API_PASSPHRASE=...
+
+python3 skill.py --prompt "EMA20/50 cross on BTCUSDT, 1h, long only, SL 2%, TP 4%" --exchange bitget --dry-run
 ```
 
 ## Notes
-Backtest now fetches OHLCV from Binance via CCXT (no API key required).
+Backtest fetches OHLCV from Binance via CCXT (no API key required).
+Execution supports Bitget adapter (dry-run by default).
