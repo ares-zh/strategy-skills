@@ -32,20 +32,32 @@ def save_trade_pnl_chart(trades, out_path):
 def save_review_html(trades, out_path, img_path):
     total = sum(float(t["pnl"]) for t in trades)
     html = f"""
-    <html><head><title>Trade Review</title></head><body>
-    <h1>Trade Review</h1>
-    <h2>Summary</h2>
-    <ul>
-      <li>Total PnL: {total:.2f}</li>
-      <li>Trades: {len(trades)}</li>
-    </ul>
-    <h2>Chart</h2>
-    <img src="{img_path}" width="600" />
-    <h2>Trades</h2>
-    <table border="1">
-      <tr><th>time</th><th>symbol</th><th>side</th><th>qty</th><th>price</th><th>pnl</th></tr>
-      {''.join([f"<tr><td>{t['time']}</td><td>{t['symbol']}</td><td>{t['side']}</td><td>{t['qty']}</td><td>{t['price']}</td><td>{t['pnl']}</td></tr>" for t in trades])}
-    </table>
+    <html><head>
+      <title>Trade Review</title>
+      <style>
+        body {{ font-family: -apple-system, Arial; padding: 24px; background:#0b0f14; color:#e6edf3; }}
+        .card {{ background:#111827; padding:16px; border-radius:12px; margin-bottom:16px; }}
+        table {{ width:100%; border-collapse: collapse; }}
+        th,td {{ border-bottom:1px solid #1f2937; padding:8px; text-align:left; }}
+      </style>
+    </head><body>
+      <h1>Trade Review</h1>
+      <div class="card">
+        <h2>Summary</h2>
+        <div>Total PnL: {total:.2f}</div>
+        <div>Trades: {len(trades)}</div>
+      </div>
+      <div class="card">
+        <h2>Chart</h2>
+        <img src="{img_path}" width="700" />
+      </div>
+      <div class="card">
+        <h2>Trades</h2>
+        <table>
+          <tr><th>time</th><th>symbol</th><th>side</th><th>qty</th><th>price</th><th>pnl</th></tr>
+          {''.join([f"<tr><td>{t['time']}</td><td>{t['symbol']}</td><td>{t['side']}</td><td>{t['qty']}</td><td>{t['price']}</td><td>{t['pnl']}</td></tr>" for t in trades])}
+        </table>
+      </div>
     </body></html>
     """
     with open(out_path, "w") as f:
