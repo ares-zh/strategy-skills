@@ -42,10 +42,11 @@ python3 skill.py --prompt "..." --exchange hyperliquid --order-type limit --pric
 
 # trade review (CSV)
 python3 - <<'PY'
-from review import load_trades, save_trade_pnl_chart, save_review_html
+from review import load_trades, save_trade_pnl_chart, save_review_html, save_pnl_histogram
 trades = load_trades('examples/trades.csv')
 save_trade_pnl_chart(trades, 'trade_pnl.png')
-save_review_html(trades, 'trade_review.html', 'trade_pnl.png')
+save_pnl_histogram(trades, 'trade_hist.png')
+save_review_html(trades, 'trade_review.html', 'trade_pnl.png', 'trade_hist.png')
 PY
 ```
 
