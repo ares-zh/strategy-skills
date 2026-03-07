@@ -46,6 +46,7 @@ Strategy Skills is a one‑stop pipeline that converts **strategy ideas** into *
 - One‑click backtest
 - Auto execution with risk guards
 - Performance reports
+- Standardized trade receipt (order → status → filled)
 - Optional exchange‑referral flow
 
 ---
