@@ -96,6 +96,10 @@ openclaw skills install /Users/aresbot/.openclaw/workspace/skills/dist/strategy-
 
 ---
 
+## 💸 交易所返佣入口（建议）
+- **Bitget**：邀请码 **je5u0965** — https://partner.hdmune.cn/bg/paz1t8py（手续费 8 折返现）
+- **Hyperliquid**：邀请码 **JE5U0965** — https://app.hyperliquid.xyz/join/JE5U0965
+
 ## 🤝 贡献
 见 `CONTRIBUTING.md`。
 
