@@ -1,0 +1,10 @@
+{
+  "name": "Range Breakout",
+  "symbol": "ETHUSDT",
+  "timeframe": "15m",
+  "direction": "long",
+  "entry": "Break above 20‑bar high",
+  "exit": "Close below 10‑bar low",
+  "stop_loss": "1.5%",
+  "take_profit": "3%"
+}

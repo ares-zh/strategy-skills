@@ -1,0 +1,10 @@
+{
+  "name": "RSI Mean Reversion",
+  "symbol": "SOLUSDT",
+  "timeframe": "1h",
+  "direction": "long",
+  "entry": "RSI < 30 and price below 20‑SMA",
+  "exit": "RSI > 50",
+  "stop_loss": "2%",
+  "take_profit": "2.5%"
+}

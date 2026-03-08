@@ -67,6 +67,20 @@ openclaw skills install /Users/aresbot/.openclaw/workspace/skills/dist/strategy-
 ## 🧩 Roadmap
 See `ROADMAP.md`.
 
+## 📦 Build & Package
+```bash
+./scripts/build_skill.sh
+```
+This produces `dist/strategy-skills.skill`.
+
+## 🧯 Risk & Safety
+- See `RISK_GUARD.md`
+- Logs & troubleshooting: `LOGGING.md`
+
+## 🧪 Examples
+- End‑to‑end demo: `examples/end_to_end.md`
+- Strategy templates: `templates/`
+
 ## 📊 Visual Reports
 - Backtest: `backtest_equity.png`, `backtest_report.html`
 - Review: `trade_pnl.png`, `trade_review.html`

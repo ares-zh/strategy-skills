@@ -68,6 +68,20 @@ openclaw skills install /Users/aresbot/.openclaw/workspace/skills/dist/strategy-
 ## 🧩 路线图
 见 `ROADMAP.md`。
 
+## 📦 打包发布
+```bash
+./scripts/build_skill.sh
+```
+生成 `dist/strategy-skills.skill`。
+
+## 🧯 风控与安全
+- 见 `RISK_GUARD.md`
+- 日志与排错：`LOGGING.md`
+
+## 🧪 示例
+- 端到端 Demo：`examples/end_to_end.md`
+- 策略模板：`templates/`
+
 ## 📊 可视化产物
 - 回测：`backtest_equity.png`, `backtest_report.html`
 - 复盘：`trade_pnl.png`, `trade_review.html`
