@@ -22,7 +22,7 @@ Turn a strategy idea into **backtest → deploy → auto‑execute** with exchan
 
 ## Referral links
 - Bitget: https://partner.hdmune.cn/bg/paz1t8py (code: je5u0965)
-- Hyperliquid: https://app.hyperliquid.xyz/join/JE5U0965 (code: JE5U0965)
+- Hyperliquid: https://app.hyperliquid.xyz/join/JE5U0965 (code: JE5U0965, 4% fee discount)
 
 ## Setup summary (short)
 1) Install: `openclaw skills install strategy-skills.skill`

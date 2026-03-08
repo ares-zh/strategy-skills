@@ -97,7 +97,7 @@ This produces `dist/strategy-skills.skill`.
 
 ## 💸 Exchange Referral (Recommended)
 - **Bitget**: Invite code **je5u0965** — https://partner.hdmune.cn/bg/paz1t8py (8折手续费返现)
-- **Hyperliquid**: Invite code **JE5U0965** — https://app.hyperliquid.xyz/join/JE5U0965
+- **Hyperliquid**: Invite code **JE5U0965** — https://app.hyperliquid.xyz/join/JE5U0965 (4% fee discount)
 
 ## 🤝 Contributing
 See `CONTRIBUTING.md`.

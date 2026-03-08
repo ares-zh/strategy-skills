@@ -6,7 +6,7 @@ CONFIG="$HOME/.strategy-skills.env"
 echo "Strategy Skills Config Wizard"
 echo "Referral links (optional):"
 echo "- Bitget: https://partner.hdmune.cn/bg/paz1t8py (code: je5u0965)"
-echo "- Hyperliquid: https://app.hyperliquid.xyz/join/JE5U0965 (code: JE5U0965)"
+echo "- Hyperliquid: https://app.hyperliquid.xyz/join/JE5U0965 (code: JE5U0965, 4% fee discount)"
 
 read -p "Exchange (bitget/hyperliquid): " EXCH
 read -p "Risk max position (USDT): " MAXPOS
